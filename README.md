@@ -22,6 +22,12 @@ universal-launcher-skill/
 │   └── skills/
 │       └── create-launcher/
 │           └── SKILL.md        # For Claude Code & Claude.ai
+├── .claude-plugin/
+│   └── marketplace.json        # Claude Code plugin marketplace
+├── plugins/
+│   └── create-launcher/        # Claude Code plugin
+│       ├── .claude-plugin/plugin.json
+│       └── skills/create-launcher/SKILL.md
 ├── .cursor/
 │   └── rules/
 │       └── create-launcher.mdc # For Cursor & Composer
@@ -34,6 +40,14 @@ universal-launcher-skill/
 
 ## 📦 Installation
 
+### 🔌 Claude Code plugin (recommended)
+```bash
+claude plugin marketplace add Kowshik46/create_launcher_skill
+claude plugin install create-launcher@kowshik-tools
+```
+Inside a session, use `/plugin marketplace add Kowshik46/create_launcher_skill` instead. Run it with `/create-launcher:create-launcher` or just ask "Create launcher scripts for this project". Keep `plugins/create-launcher/skills/create-launcher/SKILL.md` in sync with `.claude/skills/create-launcher/SKILL.md` when editing.
+
+### Manual install
 Clone this repo (or download it), then copy the file for your editor into your own project:
 
 ### 🚀 For Cursor
