@@ -48,8 +48,8 @@ For the root and each service directory: if `.env` is missing and a template (`.
 ### `launch.sh` (macOS, Linux, WSL, Git Bash)
 - Start with `#!/usr/bin/env bash` and `set -euo pipefail`; `cd "$(dirname "$0")"`.
 - Copy env templates only when `.env` is missing: `[ -f .env ] || { [ -f .env.example ] && cp .env.example .env && echo "Created .env from .env.example, fill in real values"; }`.
-- Start each service in a background subshell `( cd <dir> && <start command> ) &`, record its PID, then:
-  `trap 'kill "${PIDS[@]}" 2>/dev/null || true' INT TERM EXIT` and `wait`.
+- Run `set -m` before launching so each service gets its own process group. Start each service in a background subshell `( cd <dir> && <start command> ) &` and record its PID. Killing only the PID leaves orphans (for example `npm run dev` leaves `node` running), so clean up by process group:
+  `cleanup() { trap - INT TERM EXIT; for p in ${PIDS[@]+"${PIDS[@]}"}; do kill -TERM -- "-$p" 2>/dev/null || kill "$p" 2>/dev/null || true; done; }`, then `trap cleanup EXIT`, `trap 'exit 130' INT TERM`, and finish with `wait`.
 - Do not depend on `npx concurrently`.
 - Write with LF line endings. Then run `chmod +x launch.sh` where the filesystem supports it (skip on Windows).
 
