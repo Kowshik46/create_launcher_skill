@@ -1,0 +1,10 @@
+{
+  "name": "create-launcher",
+  "description": "Detects a project's stack, provisions .env, and generates launch.sh, launch.bat and launch.ps1 that start services concurrently.",
+  "version": "1.0.0",
+  "author": { "name": "Kowshik" },
+  "homepage": "https://github.com/Kowshik46/create_launcher_skill",
+  "repository": "https://github.com/Kowshik46/create_launcher_skill",
+  "license": "MIT",
+  "keywords": ["launcher", "setup", "env", "scripts"]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "kowshik-tools",
+  "owner": { "name": "Kowshik" },
+  "metadata": { "description": "Developer workflow skills by Kowshik" },
+  "plugins": [
+    {
+      "name": "create-launcher",
+      "source": "plugins/create-launcher",
+      "description": "Generates launch.sh, launch.bat and launch.ps1 for a project"
+    }
+  ]
+}
